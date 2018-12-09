@@ -22,3 +22,5 @@ def ssh_command(cmd, output=False):
     stdin, stdout, stderr = ssh.exec_command(cmd)
     if output:
         logging.info(stdout.read())
+    if stderr:
+        logging.info(stderr.read())

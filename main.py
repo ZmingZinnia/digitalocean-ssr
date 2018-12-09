@@ -112,7 +112,7 @@ def main():
     # execute commands on the remote host
     ssh_connect(ip, 'root', config.public_key_file_path)
     logging.info('update system.....   it takes some time')
-    ssh_command('yum install wget -y')
+    ssh_command('yum install wget git -y')
     ssh_command('wget https://raw.githubusercontent.com/zMingGit/general/master/tcp_nanqinlang-1.3.2.sh')
     ssh_command('chmod u+x tcp_nanqinlang-1.3.2.sh')
     ssh_command('./tcp_nanqinlang-1.3.2.sh install')
@@ -127,6 +127,7 @@ def main():
     ssh_command('git clone https://github.com/shadowsocksrr/shadowsocksr.git')
     ssh_command("echo '%s' > shadowsocksr/config.json" % config.ssr_config)
     ssh_command('python shadowsocksr/shadowsocks/server.py -c shadowsocksr/config.json -d start')
+    logging.info('successfully installed')
 
 
 
